@@ -1,0 +1,20 @@
+python main.py --dataset_cfg ./configs/dataset/wetlab.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/wear.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/sbhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/hangtime.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/opportunity.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/rwhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+
+python main.py --dataset_cfg ./configs/dataset/wear.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/wetlab.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/sbhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/hangtime.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/opportunity.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/rwhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+
+python main.py --dataset_cfg ./configs/dataset/wear.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/wetlab.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/sbhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/hangtime.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/opportunity.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/rwhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/25_causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb

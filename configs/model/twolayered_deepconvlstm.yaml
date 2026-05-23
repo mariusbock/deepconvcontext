@@ -1,0 +1,7 @@
+model_name: deepconvlstm
+model: {
+  conv_kernels: 64,
+  lstm_units: 128,
+  lstm_layers: 2,
+  dropout: 0.5,
+  }

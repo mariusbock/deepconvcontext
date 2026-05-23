@@ -1,0 +1,12 @@
+model_name: deepconvcontext
+model: {
+  conv_kernels: 64,
+  lstm_units: 128,
+  lstm_layers: 1,
+  dropout: 0.5,
+  type: 'transformer',
+  bidirectional: False, # if type is 'lstm'
+  attention_num_heads: 4, # if type is 'self-attention' or 'transformer'
+  transformer_depth: 2, # if type is 'transformer'
+  dim_feedforward: 256, # if type is 'transformer'
+}
