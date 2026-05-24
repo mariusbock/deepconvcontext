@@ -15,7 +15,7 @@ import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # postprocessing parameters
-types = ['main']#, 'ablation/attention', 'ablation/context_length', 'ablation/twolayered']
+types = ['main', 'ablation/attention', 'ablation/contextlength', 'ablation/twolayered']
 datasets = ['opportunity', 'wetlab', 'sbhar', 'rwhar', 'wear', 'hangtime'] 
 seeds = [1, 2, 3]
 
@@ -24,8 +24,8 @@ for type in types:
         if type == 'main':
             models = ['causalbatch', 'deepconvcontext', 'deepconvlstm', 'shallowdeepconvlstm']
         elif type == 'ablation/attention':
-            models = ['attention', 'causalattention', 'causaltransformer', 'transformer']
-        elif type == 'ablation/context_length':
+            models = ['attention', 'causalattention', 'causaltransformer', 'transformer', 'bilstm']
+        elif type == 'ablation/contextlength':
             models = ['25', '50', '200']
         elif type == 'ablation/twolayered':
             models = ['causalbatch', 'deepconvcontext', 'deepconvlstm', 'shallowdeepconvlstm']
