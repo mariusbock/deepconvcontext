@@ -1,6 +1,6 @@
-neptune==1.13.0
+wandb==0.23.1
 scikit-learn==1.6.1
-matplotlib==3.10.1
-einops==0.8.1
-tqdm==4.67.1 
+matplotlib==3.9.2
 seaborn==0.13.2
+munch==4.0.0
+numpy==1.26.4

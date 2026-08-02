@@ -1,0 +1,17 @@
+name: causal_sequence
+causal: True
+causal_type: causal_sequence
+causal_l: null
+train_cfg: {
+  lr: 0.0001,
+  lr_decay: 0.9,
+  lr_step: 10,
+  epochs: 30,
+  weight_decay: 0.000001,
+  weight_init: 'xavier_normal',
+  weighted_loss: True,
+}
+loader: {
+  train_batch_size: 200,
+  test_batch_size: 100,
+}

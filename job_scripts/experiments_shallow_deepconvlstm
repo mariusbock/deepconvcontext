@@ -1,47 +1,20 @@
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wear_loso_lstm_1.yaml --seed 1 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wear_loso_lstm_1.yaml --seed 2 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wear_loso_lstm_1.yaml --seed 3 --neptune --ckpt-freq 30
+python main.py --dataset_cfg ./configs/dataset/wear.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/wetlab.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/sbhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/hangtime.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/opportunity.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
+python main.py --dataset_cfg ./configs/dataset/rwhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 1 --wandb
 
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wear_loso_lstm_2.yaml --seed 1 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wear_loso_lstm_2.yaml --seed 2 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wear_loso_lstm_2.yaml --seed 3 --neptune
+python main.py --dataset_cfg ./configs/dataset/wear.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/wetlab.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/sbhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/hangtime.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/opportunity.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
+python main.py --dataset_cfg ./configs/dataset/rwhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 2 --wandb
 
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/sbhar_loso_lstm_1.yaml --seed 1 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/sbhar_loso_lstm_1.yaml --seed 2 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/sbhar_loso_lstm_1.yaml --seed 3 --neptune --ckpt-freq 30
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/sbhar_loso_lstm_2.yaml --seed 1 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/sbhar_loso_lstm_2.yaml --seed 2 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/sbhar_loso_lstm_2.yaml --seed 3 --neptune
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wetlab_loso_lstm_1.yaml --seed 1 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wetlab_loso_lstm_1.yaml --seed 2 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wetlab_loso_lstm_1.yaml --seed 3 --neptune --ckpt-freq 30
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wetlab_loso_lstm_2.yaml --seed 1 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wetlab_loso_lstm_2.yaml --seed 2 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/wetlab_loso_lstm_2.yaml --seed 3 --neptune
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/rwhar_loso_lstm_1.yaml --seed 1 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/rwhar_loso_lstm_1.yaml --seed 2 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/rwhar_loso_lstm_1.yaml --seed 3 --neptune --ckpt-freq 30
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/rwhar_loso_lstm_2.yaml --seed 1 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/rwhar_loso_lstm_2.yaml --seed 2 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/rwhar_loso_lstm_2.yaml --seed 3 --neptune
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/opportunity_loso_lstm_1.yaml --seed 1 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/opportunity_loso_lstm_1.yaml --seed 2 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/opportunity_loso_lstm_1.yaml --seed 3 --neptune --ckpt-freq 30
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/opportunity_loso_lstm_2.yaml --seed 1 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/opportunity_loso_lstm_2.yaml --seed 2 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/opportunity_loso_lstm_2.yaml --seed 3 --neptune
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/hangtime_loso_lstm_1.yaml --seed 1 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/hangtime_loso_lstm_1.yaml --seed 2 --neptune --ckpt-freq 30
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/hangtime_loso_lstm_1.yaml --seed 3 --neptune --ckpt-freq 30
-
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/hangtime_loso_lstm_2.yaml --seed 1 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/hangtime_loso_lstm_2.yaml --seed 2 --neptune
-python main.py --config ./configs/main_experiments/shallow_deepconvlstm/hangtime_loso_lstm_2.yaml --seed 3 --neptune
+python main.py --dataset_cfg ./configs/dataset/wear.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/wetlab.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/sbhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/hangtime.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/opportunity.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb
+python main.py --dataset_cfg ./configs/dataset/rwhar.yaml --model_cfg ./configs/model/deepconvlstm.yaml --training_cfg ./configs/training/causal_sequence_shallow_deepconvlstm.yaml --seed 3 --wandb

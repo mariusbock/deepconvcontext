@@ -1,9 +1,6 @@
 # ------------------------------------------------------------------------
 # Postprocessing script to calculate metrics and confusion matrices.
 # ------------------------------------------------------------------------
-# Adaption by: Marius Bock
-# E-Mail: marius.bock(at)uni-siegen.de
-# ------------------------------------------------------------------------
 
 import os
 import json
@@ -12,26 +9,28 @@ import numpy as np
 import pandas as pd
 from sklearn.metrics import confusion_matrix, f1_score, precision_score, recall_score
 import seaborn as sns
-from models.map_metric import ANETdetection
-from utils.data_utils import convert_samples_to_segments
+from src.utils.map_metric import ANETdetection
+from src.utils.data_utils import convert_samples_to_segments
 import warnings
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
 # postprocessing parameters
-types = ['original', 'deepconvcontext', 'batch_size']
+types = ['main', 'ablation/attention', 'ablation/contextlength', 'ablation/twolayered']
 datasets = ['opportunity', 'wetlab', 'sbhar', 'rwhar', 'wear', 'hangtime'] 
 seeds = [1, 2, 3]
 
 for type in types:
     for dataset in datasets:
-        if type == 'original':
-            models = ['deepconvlstm_1', 'deepconvlstm_2', 'shallow_1', 'shallow_2']
-        elif type == 'deepconvcontext':
-            models = ['lstm', 'bilstm', 'transformer', 'attention', 'causal_attention', 'lstm_2', 'causal_transformer']
-        elif type == 'batch_size':
+        if type == 'main':
+            models = ['causalbatch', 'deepconvcontext', 'deepconvlstm', 'shallowdeepconvlstm']
+        elif type == 'ablation/attention':
+            models = ['attention', 'causalattention', 'causaltransformer', 'transformer', 'bilstm']
+        elif type == 'ablation/contextlength':
             models = ['25', '50', '200']
+        elif type == 'ablation/twolayered':
+            models = ['causalbatch', 'deepconvcontext', 'deepconvlstm', 'shallowdeepconvlstm']
         for model in models:
-            path_to_preds = ['experiments/{}/{}/{}'.format(type, dataset, model)]
+            path_to_preds = ['experiments/{}/{}/{}'.format(type, model, dataset)]
             for path in path_to_preds:
                 if not os.path.exists(path):
                     print("Path does not exist: {}".format(path))
@@ -224,9 +223,9 @@ for type in types:
                             
                         v_preds = np.array([])
                         if 'loso' in j:
-                            v_orig_preds = np.load(os.path.join(path, 'seed_' + str(seed), 'unprocessed_results/v_preds_loso_sbj_{}.npy'.format(int(i))))
+                            v_orig_preds = np.load(os.path.join(path, str(seed), 'unprocessed_results/v_preds_loso_sbj_{}.npy'.format(int(i))))
                         else:
-                            v_orig_preds = np.load(os.path.join(path, 'seed_' + str(seed), 'unprocessed_results/v_preds_split_{}.npy'.format(int(i) + 1)))
+                            v_orig_preds = np.load(os.path.join(path, str(seed), 'unprocessed_results/v_preds_split_{}.npy'.format(int(i) + 1)))
                             
                         for sbj in val_sbjs:
                             sbj_pred = v_orig_preds[v_data[:, 0] == int(sbj.split("_")[-1])]
@@ -235,9 +234,9 @@ for type in types:
                         seg_data = convert_samples_to_segments(v_data[:, 0], v_preds, sampling_rate)
                         det_eval = ANETdetection(j, 'validation', tiou_thresholds = [0.3, 0.4, 0.5, 0.6, 0.7])
                         v_mAP, _ = det_eval.evaluate(seg_data)
-                        v_prec = precision_score(v_data[:, -1], v_preds, average=None, labels=range(0, num_classes), zero_division=0)
-                        v_rec = recall_score(v_data[:, -1], v_preds, average=None, labels=range(0, num_classes), zero_division=0)
-                        v_f1 = f1_score(v_data[:, -1], v_preds, average=None, labels=range(0, num_classes), zero_division=0)
+                        v_prec = precision_score(v_data[:, -1].astype(int), v_preds, average=None, labels=range(0, num_classes), zero_division=0)
+                        v_rec = recall_score(v_data[:, -1].astype(int), v_preds, average=None, labels=range(0, num_classes), zero_division=0)
+                        v_f1 = f1_score(v_data[:, -1].astype(int), v_preds, average=None, labels=range(0, num_classes), zero_division=0)
                                                         
                         all_prec[:, i] += v_prec
                         all_recall[:, i] += v_rec
@@ -247,20 +246,25 @@ for type in types:
                         all_gt = np.append(all_gt, v_data[:, -1])
 
                     if seed == 1:
-                        comb_conf = confusion_matrix(all_gt, all_preds, normalize='true')
+                        comb_conf = confusion_matrix(all_gt.astype(int), all_preds.astype(int), normalize='true')
                         comb_conf = np.around(comb_conf, 2)
                         comb_conf[comb_conf == 0] = np.nan
 
                         _, ax = plt.subplots(figsize=(15, 15), layout="constrained")
-                        sns.heatmap(comb_conf, annot=True, fmt='g', ax=ax, cmap=plt.cm.Greens, cbar=False, annot_kws={'fontsize': 16,}, linecolor='black', vmin=0, vmax=1)
-                        ax.set_xlabel('Predicted', fontsize=20)
-                        ax.set_ylabel('True', fontsize=20)
-                        ax.set_xticklabels(classes, rotation=45, ha='right', fontsize=16)
-                        ax.set_yticklabels(classes, rotation=0, ha='right', fontsize=16)
+                        sns.heatmap(comb_conf, annot=True, fmt='g', ax=ax, cmap=plt.cm.Purples, cbar=False, annot_kws={'fontsize': 16,}, linecolor='black', vmin=0, vmax=1)
+                        #ax.set_xlabel('Predicted', fontsize=20)
+                        #ax.set_ylabel('True', fontsize=20)
+                        #ax.set_xticklabels(classes, rotation=45, ha='right', fontsize=16)
+                        #ax.set_yticklabels(classes, rotation=0, ha='right', fontsize=16)
+                        ax.set_xticklabels([])
+                        ax.set_yticklabels([])
+                        ax.set_xlim(0, comb_conf.shape[1])
+                        ax.set_ylim(comb_conf.shape[0], 0)
+                        ax.tick_params(which="both", length=0)
                         pred_name = path.split('/')[-3] + "_" + path.split('/')[-2] + "_" + path.split('/')[-1]
-                        ax.set_title(pred_name, fontsize=20)
+                        #ax.set_title(pred_name, fontsize=20)
                         os.path.exists('confusion_matrices') or os.makedirs('confusion_matrices')
-                        _.savefig(os.path.join('confusion_matrices', pred_name + ".pdf"))
+                        _.savefig(os.path.join('confusion_matrices', pred_name + ".svg"), format='svg')
                         plt.close()
                         
                 print("Individual mAP:")
