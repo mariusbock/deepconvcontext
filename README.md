@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 
 ## Download
-The datasets used for conducting experiments can be downloaded [here (anonymised download)](https://kaggle.com/datasets/ff1a4376a6e53e97c2df6328d9ed3c4360afc5f162cfbfb3861fb9a755f66adf).
+The datasets used for conducting experiments can be downloaded [here](https://uni-bonn.sciebo.de/s/npJCrdb26RBGmFk).
 
 ## Reproduce Experiments
 Once having installed requirements, one can rerun experiments by running the `main.py` script, passing config files for model, dataset and training configurations:

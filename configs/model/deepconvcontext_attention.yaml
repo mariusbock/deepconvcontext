@@ -4,7 +4,7 @@ model: {
   lstm_units: 128,
   lstm_layers: 1,
   dropout: 0.5,
-  type: 'transformer',
+  type: 'self-attention',
   bidirectional: True, # if type is 'lstm', self-attention or transformer
   attention_num_heads: 4, # if type is 'self-attention' or 'transformer'
   transformer_depth: 1, # if type is 'transformer'

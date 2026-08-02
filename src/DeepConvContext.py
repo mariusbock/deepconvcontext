@@ -52,6 +52,10 @@ class DeepConvContext(nn.Module):
         self.fc_project = nn.Linear(lstm_units * self.final_seq_len, lstm_units)
         if type == 'lstm':
             self.context_lstm = nn.LSTM(lstm_units, lstm_units, num_layers=lstm_layers, batch_first=False, bidirectional=bidirectional)
+        elif type == 'self-attention':
+            self.pos_enc = PositionalEncoding(lstm_units, max_len=batch_size)
+            self.is_causal = not bidirectional
+            self.context_lstm = torch.nn.MultiheadAttention(embed_dim=lstm_units, num_heads=attention_num_heads, batch_first=False)
         elif type == 'transformer':
             self.pos_enc = PositionalEncoding(lstm_units, max_len=batch_size)
             self.is_causal = not bidirectional
@@ -97,6 +101,14 @@ class DeepConvContext(nn.Module):
             else:
                 attn_mask = None
             x = self.context_lstm(x, is_causal=self.is_causal, mask=attn_mask)
+        elif isinstance(self.context_lstm, torch.nn.MultiheadAttention):
+            x = self.pos_enc(x)
+            if self.is_causal:
+                seq_len = x.size(0)
+                attn_mask = torch.nn.Transformer.generate_square_subsequent_mask(seq_len).to(x.device)
+            else:
+                attn_mask = None
+            x, _ = self.context_lstm(x, x, x, attn_mask=attn_mask)
         else:
             x, hidden = self.context_lstm(x, hidden)
 
