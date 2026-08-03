@@ -4,9 +4,9 @@ model: {
   lstm_units: 128,
   lstm_layers: 1,
   dropout: 0.5,
-  type: 'transformer',
-  bidirectional: False, # if type is 'lstm'
+  type: 'transformer', # 'lstm', 'self-attention', 'transformer'
+  bidirectional: False, # if type is 'lstm', 'self-attention' or 'transformer'
   attention_num_heads: 4, # if type is 'self-attention' or 'transformer'
   transformer_depth: 2, # if type is 'transformer'
-  dim_feedforward: 256, # if type is 'transformer'
+  dim_feedforward: 256, # if type is 'transformer' or 'self-attention'
 }
